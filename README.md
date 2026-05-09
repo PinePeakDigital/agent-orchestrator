@@ -53,8 +53,7 @@ GitHub Issue (label: agent:ready)
 ├── litellm.yaml          # model tier → provider mapping
 ├── config.example.toml   # template for ~/.config/agent-orchestrator/config.toml
 ├── .env.example          # template for ~/.config/agent-orchestrator/.env
-├── requirements.txt      # litellm[proxy], aider-chat
-├── install.sh            # copies config templates + systemd units into place
+├── install.sh            # installs deps + copies config + systemd units
 └── systemd/              # user service + timer units (paths filled in by install.sh)
 ```
 
@@ -66,7 +65,9 @@ Run from inside the repo:
 ./install.sh
 ```
 
-That copies config templates to `~/.config/agent-orchestrator/`, installs systemd user units, and prints the next steps (edit env + config, install Python deps, create labels, enable services).
+That installs runtime deps (`uv tool install aider-chat`, `pipx install litellm[proxy]`), copies config templates to `~/.config/agent-orchestrator/`, installs systemd user units, and prints the next steps (edit env + config, create labels, smoke test, enable services).
+
+> **Why uv for aider?** Aider pins `numpy==1.24.3`, which won't build on Python 3.13+. `uv tool install` gives Aider its own Python (3.12) without polluting the system environment.
 
 ## Safety
 
