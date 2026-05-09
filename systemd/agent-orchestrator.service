@@ -5,8 +5,9 @@ After=agent-orchestrator-litellm.service
 
 [Service]
 Type=oneshot
-EnvironmentFile=%h/.config/agent-orchestrator/.env
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin
 Environment=AGENT_ORCH_CONFIG=%h/.config/agent-orchestrator/config.toml
+EnvironmentFile=%h/.config/agent-orchestrator/.env
 ExecStart=/usr/bin/env python3 __REPO_DIR__/daemon.py
 StandardOutput=journal
 StandardError=journal
