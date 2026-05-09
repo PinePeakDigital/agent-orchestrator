@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Local state and runtime
+state.json
+*.pid
+logs/
+workspaces/
+repos/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
