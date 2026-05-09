@@ -1,0 +1,14 @@
+[Unit]
+Description=LiteLLM proxy for agent-orchestrator
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=%h/.config/agent-orchestrator/.env
+ExecStart=/usr/bin/env litellm --config %h/.config/agent-orchestrator/litellm.yaml --port 4000 --host 127.0.0.1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

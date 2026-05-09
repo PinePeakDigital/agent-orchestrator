@@ -1,0 +1,12 @@
+[Unit]
+Description=agent-orchestrator daemon tick
+Requires=agent-orchestrator-litellm.service
+After=agent-orchestrator-litellm.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/.config/agent-orchestrator/.env
+Environment=AGENT_ORCH_CONFIG=%h/.config/agent-orchestrator/config.toml
+ExecStart=/usr/bin/env python3 __REPO_DIR__/daemon.py
+StandardOutput=journal
+StandardError=journal

@@ -48,11 +48,25 @@ GitHub Issue (label: agent:ready)
 
 ```
 .
-├── daemon.py          # poll → claim → spawn → mark
-├── worker.sh          # worktree → aider → push → PR
-├── litellm.yaml       # model tier → provider mapping
-└── systemd/           # user service + timer units
+├── daemon.py             # poll → claim → spawn → mark (one issue per tick)
+├── worker.sh             # worktree → aider → push → PR
+├── litellm.yaml          # model tier → provider mapping
+├── config.example.toml   # template for ~/.config/agent-orchestrator/config.toml
+├── .env.example          # template for ~/.config/agent-orchestrator/.env
+├── requirements.txt      # litellm[proxy], aider-chat
+├── install.sh            # copies config templates + systemd units into place
+└── systemd/              # user service + timer units (paths filled in by install.sh)
 ```
+
+## Setup
+
+Run from inside the repo:
+
+```bash
+./install.sh
+```
+
+That copies config templates to `~/.config/agent-orchestrator/`, installs systemd user units, and prints the next steps (edit env + config, install Python deps, create labels, enable services).
 
 ## Safety
 

@@ -1,0 +1,26 @@
+# LiteLLM proxy config for agent-orchestrator.
+# Logical aliases (default / premium / janitor) map to underlying providers.
+# Adding a tier later means adding an entry here — daemon and worker don't change.
+
+model_list:
+  - model_name: default
+    litellm_params:
+      model: minimax/MiniMax-M2.7
+      api_key: os.environ/MINIMAX_API_KEY
+      api_base: https://api.minimax.io/v1
+
+# v1 tiers (uncomment + set the matching API keys in .env to enable):
+#
+#   - model_name: premium
+#     litellm_params:
+#       model: anthropic/claude-opus-4-7
+#       api_key: os.environ/ANTHROPIC_API_KEY
+#
+#   - model_name: janitor
+#     litellm_params:
+#       model: minimax/MiniMax-M2.7-highspeed
+#       api_key: os.environ/MINIMAX_API_KEY
+#       api_base: https://api.minimax.io/v1
+
+litellm_settings:
+  drop_params: true

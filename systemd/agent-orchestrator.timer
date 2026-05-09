@@ -1,0 +1,12 @@
+[Unit]
+Description=Tick agent-orchestrator daemon every 60 seconds
+Requires=agent-orchestrator.service
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=60s
+AccuracySec=10s
+Unit=agent-orchestrator.service
+
+[Install]
+WantedBy=timers.target

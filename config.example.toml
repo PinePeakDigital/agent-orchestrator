@@ -1,0 +1,19 @@
+# agent-orchestrator daemon config.
+# Copy to ~/.config/agent-orchestrator/config.toml and edit.
+
+# GitHub repo to poll, in "owner/name" format.
+repo = "PinePeakDigital/your-pilot-repo"
+
+# Where worktrees and bare clones live. Must be writable by the daemon user.
+workspace_root = "/home/narthur/agent-orchestrator-data"
+
+# LiteLLM model alias to use (must match an entry in litellm.yaml).
+# Format: "openai/<alias>" routes Aider through the OpenAI-compatible
+# interface of the local LiteLLM proxy.
+model = "openai/default"
+
+# LiteLLM proxy URL.
+litellm_base = "http://127.0.0.1:4000"
+
+# Branch name prefix for agent PRs.
+branch_prefix = "agent"
